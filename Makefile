@@ -8,9 +8,8 @@ run_test:
 run:
 	go run main.go
 
-
 new_version:
-	@echo "Enter new version: "
+	@echo "Digite a nova versão: "
 	@read version; \
 	git tag $$version; \
 	git push origin $$version

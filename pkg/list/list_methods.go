@@ -6,13 +6,18 @@ func (l *List[T]) Each(fn func(item T)) {
 	}
 }
 
-func (l *List[T]) WhereImutable(fn func(item T) bool) *List[T] {
-	bufferList := New[T]()
-	for _, item := range l.data {
-		canAdd := fn(item)
-		if canAdd {
-			bufferList.Insert(item)
+func (l *List[T]) RemoveWhere(fn func(item T) bool) {
+	for i, item := range l.data {
+		if fn(item) {
+			l.data = append(l.data[:i], l.data[i+1:]...)
 		}
 	}
-	return bufferList
+}
+
+func FilterImutable() {
+
+}
+
+func Filter() {
+
 }

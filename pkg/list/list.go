@@ -63,7 +63,6 @@ func (l *List[T]) Find(item T) T {
 }
 
 func (l *List[T]) FindById(i int) T {
-
 	err := l.validateIndexOutBound(i)
 	if err != nil {
 		panic(err)
@@ -74,6 +73,5 @@ func (l *List[T]) FindById(i int) T {
 			return l.data[it]
 		}
 	}
-
 	panic("Valor não encontrado")
 }

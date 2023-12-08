@@ -1,20 +1,10 @@
 package list
 
 import (
-	"bytes"
 	"errors"
-	"strconv"
+
+	. "github.com/devcael/go-utils/pkg/str"
 )
-
-func Concat(l []string) string {
-	var buffer bytes.Buffer
-
-	for _, str := range l {
-		buffer.WriteString(str)
-	}
-
-	return buffer.String()
-}
 
 type List[T comparable] struct {
 	data []T
@@ -22,10 +12,13 @@ type List[T comparable] struct {
 
 func (l *List[T]) validateIndexOutBound(index int) error {
 	if len(l.data) < index {
-		var message bytes.Buffer
-		message.WriteString("Outbound index: ")
-		message.WriteString(strconv.FormatInt(int64(index), 10))
-		return errors.New(message.String())
+
+		message := Concat([]string{
+			"Index out of bound: ",
+			ToString(index),
+		})
+
+		return errors.New(message)
 	}
 	return nil
 }

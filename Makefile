@@ -1,1 +1,18 @@
 
+run_test_v:
+	go test -v ./...
+
+run_test:
+	go test ./...
+
+run:
+	go run main.go
+
+
+new_version:
+	@echo "Enter new version: "
+	@read version; \
+	git tag $$version; \
+	git push origin $$version
+	go list -m -json | curl -X PATCH -d @- https://proxy.golang.org/$(go list -m)
+

@@ -12,7 +12,7 @@ func (l *List[T]) RemoveByItem(item T) *List[T] {
 	panic("Index outbound cannot remove")
 }
 
-func (l *List[T]) RemoveByIndex(index int) *List[T] {
+func (l *List[T]) Remove(index int) *List[T] {
 	err := l.validateIndexOutBound(index)
 	if err != nil {
 		panic(err)
@@ -25,4 +25,9 @@ func (l *List[T]) RemoveByIndex(index int) *List[T] {
 	}
 
 	panic("Index outbound cannot remove")
+}
+
+func (l *List[T]) RemoveAll() *List[T] {
+	l.data = []T{}
+	return l
 }

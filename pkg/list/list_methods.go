@@ -14,10 +14,12 @@ func (l *List[T]) RemoveWhere(fn func(item T) bool) {
 	}
 }
 
-func FilterImutable() {
-
-}
-
-func Filter() {
-
+func (l *List[T]) Filter(test func(item T) bool) *List[T] {
+	bufList := New[T]()
+	for _, it := range l.data {
+		if test(it) {
+			bufList.Insert(it)
+		}
+	}
+	return bufList
 }

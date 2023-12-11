@@ -8,6 +8,9 @@ run_test:
 run:
 	go run main.go
 
+curr_version:
+	@echo "Current version: $(shell git describe --abbrev=0 --tags)"
+
 new_version:
 	@echo "Digite a nova versão: "
 	@read version; \
